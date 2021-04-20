@@ -1,7 +1,7 @@
 {
   "name": "get-jazzy-ajax",
   "version": "1.0.0",
-  "description": "",
+  "description": "We've got a request to make an application to track favorite Jazz artists and songs for a local fan club. One of the members is a hobby developer, so they've provided some starter code for us, but they aren't sure how to write the code to work with a database, so we'll need to add that part.",
   "main": "index.js",
   "scripts": {
     "start": "node server/server.js",
@@ -11,6 +11,15 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.16.3"
-  }
+    "express": "^4.17.1",
+    "pg": "^8.6.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Manxiong26/my-jazzy-sql-database.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Manxiong26/my-jazzy-sql-database/issues"
+  },
+  "homepage": "https://github.com/Manxiong26/my-jazzy-sql-database#readme"
 }

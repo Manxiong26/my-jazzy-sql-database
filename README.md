@@ -30,8 +30,8 @@ From this ERD, we can see that we'll need to setup 2 tables: artist & song. We c
 
 Using the ERD above:
 
-- [ ] Create a new database called `jazzy_sql` using Postico.
-- [ ] Write the SQL to create both of the tables (Note: Make sure to use the table names show.)
+- [x] Create a new database called `jazzy_sql` using Postico.
+- [x] Write the SQL to create both of the tables (Note: Make sure to use the table names show.)
 - [ ] Write INSERT statements to add the sample data provided in the `server.js` file. 
 - [ ] Create the tables and insert the test data using Postico.
 - [ ] Add the SQL to the `database.sql` file. This file will help others interested in this project, get it setup correctly if they pick it up from GitHub.
