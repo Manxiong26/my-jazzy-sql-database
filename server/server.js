@@ -87,7 +87,7 @@ app.post('/artist', (req, res) => {
                 ("name", "birthdate")
         VALUES
                 ($1, $2)
-    ;`
+    ;`;
 
     let queryArgs = [
         req.body.name,
@@ -121,8 +121,30 @@ app.get('/song', (req, res) => {
 });
 
 app.post('/song', (req, res) => {
-    songList.push(req.body);
-    res.sendStatus(201);
+    console.log('req.body', req.body);
+    let queryString = `
+        INSERT INTO "song"
+            ("title", "length", "released")
+        VALUES 
+            ($1, $2, $3)
+    ;`;
+    let queryArgs = [
+        req.body.title,
+        req.body.length,
+        req.body.released
+    ];
+    console.log('Query string is:', queryString);
+    pool.query(queryString, queryArgs)
+        .then(function (dbRes){
+            res.sendStatus(201);
+        })
+        .catch(function (err){
+            console.log(err);
+            res.sendStatus(500);
+            
+        });
+    //songList.push(req.body);
+   // res.sendStatus(201);
 });
 
 
