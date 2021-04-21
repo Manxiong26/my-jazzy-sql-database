@@ -67,8 +67,8 @@ const songList = [
 ];
 
 app.get('/artist', (req, res) => {
-    console.log(`In /songs GET`);
-    let queryText = 'SELECT * FROM artist;';
+    console.log(`In /artist GET`);
+    let queryText = 'SELECT * FROM artist ORDER BY birthdate DESC;';
     pool.query(queryText)
     .then(dbResults => {
         res.send(dbResults.rows);
@@ -81,16 +81,37 @@ app.get('/artist', (req, res) => {
 });
 
 app.post('/artist', (req, res) => {
-    artistList.push(req.body);
-    res.sendStatus(201);
+    console.log('req.body', req.body);
+    let queryString= `
+        INSERT INTO "artist"
+                ("name", "birthdate")
+        VALUES
+                ($1, $2)
+    ;`
+
+    let queryArgs = [
+        req.body.name,
+        req.body.birthdate
+    ];
+    console.log('queryString is:', queryString);
+    pool.query(queryString, queryArgs)
+    .then(function (dbRes) {
+        res.sendStatus(201);
+    })
+    .catch(function (err){
+        console.log('Error, something is wrong', err);
+        
+    });
+    //artistList.push(req.body);
+    //res.sendStatus(201);
 });
 
 app.get('/song', (req, res) => {
-    console.log(`In /songs GET`);
-    let queryText = 'SELECT * FROM song;';
+    console.log(`In /song GET`);
+    let queryText = 'SELECT * FROM song ORDER BY title;';
     pool.query(queryText)
     .then(dbResults =>{
-        res.send(dbResults.row);
+        res.send(dbResults.rows);
     })
     //res.send(songList);
     .catch(error => {
